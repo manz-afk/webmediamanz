@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f3efe6">
+<title>NEXVORA — Media Hub</title>
+
+<style>
+:root {
+  --bg: #f3efe6;
+  --ink: #171717;
+  --muted: #858585;
+  --teal: #278b86;
+  --line: #c9c7c1;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, Arial, sans-serif;
+  padding-bottom: 100px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 18px 14px;
+  position: sticky;
+  top: 0;
+  background: rgba(243,239,230,.96);
+  z-index: 5;
+}
+
+.iconbtn {
+  border: 0;
+  background: transparent;
+  font-size: 24px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.brand {
+  font-weight: 850;
+  font-size: 19px;
+}
+
+.sub {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.online {
+  font-size: 11px;
+  font-weight: 800;
+  margin-top: 3px;
+}
+
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #20bf86;
+  margin-right: 5px;
+}
+
+.clock {
+  margin-left: auto;
+  text-align: right;
+  font-size: 25px;
+  font-weight: 850;
+  line-height: 1.05;
+}
+
+.clock small {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+main {
+  max-width: 760px;
+  margin: auto;
+  padding: 0 17px;
+}
+
+button {
+  font-family: inherit;
+}
+
+.feature-link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  border: 1.5px solid #aaa;
+  border-radius: 17px;
+  padding: 13px 17px;
+  background: #fff;
+  margin: 10px 0 28px;
+  cursor: pointer;
+}
+
+.feature-link .glyph {
+  color: var(--teal);
+  font-size: 21px;
+}
+
+.feature-link strong {
+  color: var(--teal);
+}
+
+.feature-link small {
+  display: block;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.arrow {
+  margin-left: auto;
+  font-size: 25px;
+}
+
+.hero {
+  height: 240px;
+  border: 5px solid #111;
+  border-radius: 28px;
+  background: #000 url('media/start.jpg') center/contain no-repeat;
+  box-shadow: 8px 8px 0 var(--teal);
+  position: relative;
+  margin: 0 4px 42px;
+}
+
+.ribbon {
+  position: absolute;
+  top: -17px;
+  left: 7px;
+  background: var(--teal);
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 9px 13px;
+  transform: rotate(-3deg);
+}
+
+.profile {
+  background: #050505;
+  color: white;
+  min-height: 205px;
+  padding: 19px 18px 14px;
+  margin-bottom: 38px;
+  box-shadow: 6px 6px 0 var(--teal);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile:before {
+  content: "N";
+  font-size: 220px;
+  font-weight: 900;
+  color: #333;
+  opacity: .45;
+  position: absolute;
+  right: 12px;
+  top: -70px;
+}
+
+.profiletop {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.avatar {
+  width: 66px;
+  height: 66px;
+  border: 2px solid var(--teal);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--teal);
+  font-size: 27px;
+  background: #102b2a;
+}
+
+.wel {
+  color: #aaa;
+  font-size: 12px;
+}
+
+.username {
+  font-size: 23px;
+  font-weight: 850;
+}
+
+.id {
+  color: #999;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.profilebottom {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #444;
+  margin-top: 65px;
+  padding-top: 10px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.profilebottom strong {
+  display: block;
+  color: white;
+  font-size: 15px;
+  margin-top: 3px;
+}
+
+.panel {
+  border: 2px solid #171717;
+  border-radius: 17px;
+  background: #fff;
+  padding: 14px;
+  margin: 0 0 30px;
+  box-shadow: 4px 4px 0 var(--teal);
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 850;
+  margin: 0 0 12px;
+}
+
+.section-title span {
+  color: var(--teal);
+}
+
+.server {
+  border: 1px solid var(--line);
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timebig {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.date {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.serverstate {
+  color: var(--teal);
+  font-weight: 850;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.stat {
+  border: 1px solid var(--line);
+  padding: 12px 10px;
+  min-height: 88px;
+}
+
+.stat small {
+  color: #888;
+  font-weight: 750;
+  font-size: 10px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 27px;
+  margin-top: 8px;
+}
+
+.heading {
+  font-size: 13px;
+  font-weight: 900;
+  margin: 28px 0 12px;
+  border-left: 5px solid var(--teal);
+  padding-left: 10px;
+}
+
+.notice,
+.activity {
+  background: #fff;
+  border: 2px solid #171717;
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 4px 4px 0 var(--teal);
+  margin-bottom: 24px;
+}
+
+.notice p,
+.activity p {
+  font-size: 13px;
+  color: #888;
+  margin: 6px 0 0;
+}
+
+.activity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.activity .grow {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity time {
+  font-size: 10px;
+  color: #888;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin: 14px 0;
+  flex-wrap: wrap;
+}
+
+.search {
+  width: 100%;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+  font: inherit;
+}
+
+.pill {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 13px;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.pill.active {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.media-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.media-card img,
+.media-card video {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+  background: #111;
+  cursor: pointer;
+}
+
+.media-card .meta {
+  padding: 9px;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.fav {
+  border: 0;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  color: #777;
+}
+
+.fav.on {
+  color: #e6a500;
+}
+
+.empty {
+  padding: 30px 12px;
+  text-align: center;
+  color: #888;
+  background: white;
+  border: 1px dashed #bbb;
+  border-radius: 12px;
+}
+
+.bottomnav {
+  position: fixed;
+  z-index: 10;
+  bottom: 10px;
+  left: 5%;
+  width: 90%;
+  max-width: 720px;
+  background: #fff;
+  border: 3px solid #151515;
+  border-radius: 32px;
+  box-shadow: 5px 5px 0 var(--teal);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 6px 4px 4px;
+}
+
+.navitem {
+  border: 0;
+  background: transparent;
+  color: #777;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 850;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.navitem .ni {
+  font-size: 21px;
+}
+
+.navitem.active {
+  color: #111;
+}
+
+.navitem.active .ni {
+  background: #ffb51b;
+  border: 3px solid #111;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  margin-top: -31px;
+  box-shadow: 0 0 0 3px white;
+}
+
+.drawer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #0008;
+  z-index: 20;
+}
+
+.drawer.open {
+  display: block;
+}
+
+.drawerbox {
+  width: min(300px, 85vw);
+  height: 100%;
+  background: #fff;
+  padding: 24px;
+}
+
+.drawerbox button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  text-align: left;
+  background: #fff;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  font: inherit;
+  cursor: pointer;
+}
+
+dialog {
+  border: 2px solid #111;
+  border-radius: 16px;
+  max-width: 92vw;
+  width: 480px;
+  padding: 16px;
+}
+
+dialog::backdrop {
+  background: #0009;
+}
+
+dialog img,
+dialog video {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  background: #111;
+}
+
+.dialogrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+@media (min-width: 600px) {
+  .hero {
+    height: 300px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .profile {
+    min-height: 220px;
+  }
+
+  .profilebottom {
+    margin-top: 80px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <button class="iconbtn" id="menuBtn" aria-label="Buka menu">☰</button>
+
+  <div>
+    <div class="brand">
+      nexvora <span style="color:#aaa;font-weight:500">• budi_manz</span>
+    </div>
+    <div class="online">
+      <span class="dot"></span>ONLINE
+    </div>
+  </div>
+
+  <div class="clock">
+    <span id="clock">21:54</span>
+    <small id="date">19 Okt</small>
+  </div>
+</header>
+
+<main>
+
+<button class="feature-link" onclick="showPage('features')">
+  <span class="glyph">▦</span>
+  <span>
+    <strong>NEXVORA FITUR</strong>
+    <small>Buka semua fitur dan alat</small>
+  </span>
+  <span class="arrow">›</span>
+</button>
+
+<section id="home" class="page active">
+
+  <div class="hero">
+    <div class="ribbon">NEXVORA // MAIN HQ</div>
+  </div>
+
+  <div class="profile">
+    <div class="profiletop">
+      <div class="avatar">●</div>
+
+      <div>
+        <div class="wel">Welcome Back,</div>
+        <div class="username">budi_manz</div>
+        <div class="id">ID: 12***</div>
+      </div>
+    </div>
+
+    <div class="profilebottom">
+      <div>ROLE<strong>USER</strong></div>
+      <div>● STATUS<strong style="color:#20bf86">Online</strong></div>
+      <div style="text-align:right">NEXVORA<strong>by manz</strong></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2 class="section-title">
+      <span>◈</span> INFORMASI DASHBOARD
+    </h2>
+
+    <div class="server">
+      <div>
+        <div class="timebig" id="clock2">21:54</div>
+        <div class="date" id="date2">19 Okt 2026</div>
+      </div>
+
+      <div class="serverstate">
+        ▤ ONLINE
+        <small style="display:block;color:#999;text-align:right;margin-top:8px;font-size:10px">
+          SERVER
+        </small>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <small>FITUR</small>
+        <strong>42</strong>
+      </div>
+
+      <div class="stat">
+        <small>FAVORIT</small>
+        <strong id="favCount">0</strong>
+      </div>
+
+      <div class="stat">
+        <small>RIWAYAT</small>
+        <strong id="historyCount">0</strong>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="heading">PENGUMUMAN</h3>
+
+  <div class="notice">
+    <strong>Update 1.7</strong>
+    <p>Fitur baru sudah masuk. Cek menu Fitur.</p>
+  </div>
+
+  <h3 class="heading">AKTIVITAS TERAKHIR</h3>
+
+  <div class="activity">
+    <div class="grow">
+      <strong id="lastActivity">Galeri media</strong>
+      <p id="lastUrl">Pilih foto atau video untuk melihat media.</p>
+    </div>
+
+    <time id="lastDate">19/10/2026</time>
+  </div>
+
+</section>
+
+<section id="features" class="page">
+  <div class="panel">
+    <h2 class="section-title">
+      <span>▦</span> NEXVORA FITUR
+    </h2>
+
+    <p style="color:#888;font-size:13px">
+      Galeri foto dan video.
+    </p>
+
+    <div class="toolbar">
+      <button class="pill active" onclick="showMedia('photo')">
+        📷 Foto (25)
+      </button>
+
+      <button class="pill" onclick="showMedia('video')">
+        🎬 Video (5)
+      </button>
+    </div>
+
+    <div id="gallery" class="grid"></div>
+  </div>
+</section>
+
+<section id="search" class="page">
+  <div class="panel">
+    <h2 class="section-title">
+      <span>⌕</span> CARI MEDIA
+    </h2>
+
+    <input
+      id="searchInput"
+      class="search"
+      placeholder="Cari foto atau video berdasarkan nomor..."
+    >
+
+    <div class="toolbar">
+      <button class="pill active" onclick="showMedia('photo')">Foto</button>
+      <button class="pill" onclick="showMedia('video')">Video</button>
+    </div>
+
+    <div id="searchResults" class="grid"></div>
+  </div>
+</section>
+
+<section id="favorites" class="page">
+  <div class="panel">
+    <h2 class="section-title">
+      <span>★</span> FAVORIT
+    </h2>
+
+    <div id="favoriteGrid" class="grid"></div>
+  </div>
+</section>
+
+<section id="account" class="page">
+  <div class="panel">
+    <h2 class="section-title">
+      <span>●</span> AKUN
+    </h2>
+
+    <p><b>budi_manz</b></p>
+    <p style="color:#888;font-size:13px">Role: User</p>
+    <p style="color:#888;font-size:13px">Status: Online (demo)</p>
+
+    <hr style="border:0;border-top:1px solid #ddd">
+
+    <p style="font-size:13px">
+      Ini masih versi HTML statis. Login sungguhan dan penyimpanan
+      server memerlukan backend.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<nav class="bottomnav">
+  <button class="navitem active" data-page="home">
+    <span class="ni">⌂</span><span>HOME</span>
+  </button>
+
+  <button class="navitem" data-page="features">
+    <span class="ni">▦</span><span>FITUR</span>
+  </button>
+
+  <button class="navitem" data-page="search">
+    <span class="ni">⌕</span><span>CARI</span>
+  </button>
+
+  <button class="navitem" data-page="favorites">
+    <span class="ni">★</span><span>FAVORIT</span>
+  </button>
+
+  <button class="navitem" data-page="account">
+    <span class="ni">●</span><span>AKUN</span>
+  </button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <div class="drawerbox">
+    <div style="font-weight:900;font-size:20px;margin-bottom:15px">
+      NEXVORA
+    </div>
+
+    <button onclick="navigate('home')">⌂ Home</button>
+    <button onclick="navigate('features')">▦ Fitur / Galeri</button>
+    <button onclick="navigate('search')">⌕ Cari</button>
+    <button onclick="navigate('favorites')">★ Favorit</button>
+    <button onclick="navigate('account')">● Akun</button>
+    <button onclick="closeDrawer()">✕ Tutup menu</button>
+  </div>
+</div>
+
+<dialog id="viewer">
+  <div class="dialogrow">
+    <b id="viewerTitle">Media</b>
+    <button class="pill" onclick="viewer.close()">Tutup ✕</button>
+  </div>
+
+  <div id="viewerContent"></div>
+
+  <p id="viewerNote" style="color:#888;font-size:12px"></p>
+</dialog>
+
+<script>
+const photos = Array.from({length:25}, (_,i) => ({
+  type: "photo",
+  n: i + 1,
+  src: `media/photos/${i + 1}.jpg`
+}));
+
+const videos = Array.from({length:5}, (_,i) => ({
+  type: "video",
+  n: i + 1,
+  src: `media/videos/${i + 1}.mp4`
+}));
+
+let currentType = "photo";
+
+let favorites = JSON.parse(
+  localStorage.getItem("nexvoraFavorites") || "[]"
+);
+
+let history = JSON.parse(
+  localStorage.getItem("nexvoraHistory") || "[]"
+);
+
+function allMedia() {
+  return [...photos, ...videos];
+}
+
+function mediaKey(m) {
+  return `${m.type}-${m.n}`;
+}
+
+function updateStats() {
+  document.getElementById("favCount").textContent =
+    favorites.length;
+
+  document.getElementById("historyCount").textContent =
+    history.length;
+}
+
+function renderGrid(target, items) {
+  const el = document.getElementById(target);
+
+  if (!items.length) {
+    el.innerHTML = `
+      <div class="empty" style="grid-column:1/-1">
+        Belum ada media untuk ditampilkan.
+      </div>`;
+    return;
+  }
+
+  el.innerHTML = items.map(m => `
+    <article class="media-card">
+      ${
+        m.type === "photo"
+        ? `<img
+            src="${m.src}"
+            alt="Foto ${m.n}"
+            loading="lazy"
+            onclick="openMedia('photo',${m.n})"
+            onerror="this.style.opacity='.25'"
+          >`
+        : `<video
+            src="${m.src}"
+            controls
+            preload="metadata"
+          ></video>`
+      }
+
+      <div class="meta">
+        <span>${m.type === "photo" ? "Foto" : "Video"} ${m.n}</span>
+
+        <button
+          class="fav ${favorites.includes(mediaKey(m)) ? "on" : ""}"
+          onclick="toggleFavorite('${m.type}',${m.n})"
+          aria-label="Favorit"
+        >
+          ${favorites.includes(mediaKey(m)) ? "★" : "☆"}
+        </button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function showMedia(type) {
+  currentType = type;
+
+  document.querySelectorAll(".toolbar").forEach(toolbar => {
+    const buttons = toolbar.querySelectorAll(".pill");
+
+    buttons.forEach(button => {
+      const text = button.textContent.toLowerCase();
+
+      const selected =
+        type === "photo"
+        ? text.includes("foto")
+        : text.includes("video");
+
+      button.classList.toggle("active", selected);
+    });
+  });
+
+  const items = type === "photo" ? photos : videos;
+
+  renderGrid("gallery", items);
+  doSearch();
+}
+
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.toggle("active", page.id === id);
+  });
+
+  document.querySelectorAll(".navitem").forEach(button => {
+    button.classList.toggle("active", button.dataset.page === id);
+  });
+
+  if (id === "favorites") {
+    renderGrid(
+      "favoriteGrid",
+      allMedia().filter(m => favorites.includes(mediaKey(m)))
+    );
+  }
+
+  if (id === "search") {
+    doSearch();
+  }
+
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function navigate(id) {
+  showPage(id);
+  closeDrawer();
+}
+
+document.querySelectorAll(".navitem").forEach(button => {
+  button.addEventListener("click", () => showPage(button.dataset.page));
+});
+
+function toggleFavorite(type, n) {
+  const key = `${type}-${n}`;
+
+  favorites = favorites.includes(key)
+    ? favorites.filter(item => item !== key)
+    : [...favorites, key];
+
+  localStorage.setItem(
+    "nexvoraFavorites",
+    JSON.stringify(favorites)
+  );
+
+  updateStats();
+
+  showMedia(currentType);
+
+  if (document.getElementById("favorites").classList.contains("active")) {
+    renderGrid(
+      "favoriteGrid",
+      allMedia().filter(m => favorites.includes(mediaKey(m)))
+    );
+  }
+}
+
+function openMedia(type, n) {
+  const media = allMedia().find(
+    item => item.type === type && item.n === n
+  );
+
+  if (!media) return;
+
+  history = [
+    mediaKey(media),
+    ...history.filter(item => item !== mediaKey(media))
+  ].slice(0, 50);
+
+  localStorage.setItem(
+    "nexvoraHistory",
+    JSON.stringify(history)
+  );
+
+  updateStats();
+
+  document.getElementById("lastActivity").textContent =
+    (type === "photo" ? "Foto " : "Video ") + n;
+
+  document.getElementById("lastUrl").textContent = media.src;
+
+  document.getElementById("viewerTitle").textContent =
+    (type === "photo" ? "Foto " : "Video ") + n;
+
+  document.getElementById("viewerContent").innerHTML =
+    type === "photo"
+    ? `<img src="${media.src}" alt="Foto ${n}">`
+    : `<video src="${media.src}" controls autoplay></video>`;
+
+  document.getElementById("viewerNote").textContent =
+    "Pastikan file media sudah diunggah ke folder media.";
+
+  document.getElementById("viewer").showModal();
+}
+
+function doSearch() {
+  const query = (
+    document.getElementById("searchInput")?.value || ""
+  ).trim().toLowerCase();
+
+  const items = allMedia().filter(media => {
+    const matchesType = media.type === currentType;
+
+    const matchesQuery =
+      !query ||
+      `${media.type} ${media.n}`.includes(query) ||
+      `${media.type === "photo" ? "foto" : "video"} ${media.n}`.includes(query);
+
+    return matchesType && matchesQuery;
+  });
+
+  renderGrid("searchResults", items);
+}
+
+document.getElementById("searchInput").addEventListener(
+  "input",
+  doSearch
+);
+
+document.getElementById("menuBtn").onclick = () => {
+  document.getElementById("drawer").classList.add("open");
+};
+
+function closeDrawer() {
+  document.getElementById("drawer").classList.remove("open");
+}
+
+document.getElementById("drawer").addEventListener("click", event => {
+  if (event.target.id === "drawer") closeDrawer();
+});
+
+function tick() {
+  const date = new Date();
+
+  const time = date.toLocaleTimeString("id-ID", {
+    hour:"2-digit",
+    minute:"2-digit",
+    hour12:false
+  });
+
+  document.getElementById("clock").textContent = time;
+  document.getElementById("clock2").textContent = time;
+
+  document.getElementById("date").textContent =
+    date.toLocaleDateString("id-ID", {
+      day:"numeric",
+      month:"short"
+    });
+
+  document.getElementById("date2").textContent =
+    date.toLocaleDateString("id-ID", {
+      weekday:"short",
+      day:"numeric",
+      month:"short",
+      year:"numeric"
+    });
+
+  document.getElementById("lastDate").textContent =
+    date.toLocaleDateString("id-ID");
+}
+
+tick();
+setInterval(tick, 30000);
+
+renderGrid("gallery", photos);
+renderGrid("searchResults", photos);
+updateStats();
+</script>
+
+</body>
+</html>
